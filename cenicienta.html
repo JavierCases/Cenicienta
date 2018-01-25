@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>
+		zapatito javier cases
+	</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+//me desargo los archivos de alberto, luego le cambio en los archivos cargajuego.php le cambio el /index.php por /cenicienta.html
+
+var rutaa = 0;
+var rutab = 0;
+var tiempo = 300;
+var j=100;
+var puntos = 0;
+
+
+function ganaste(){
+	puntos = puntos + 100;
+	document.getElementById("puntos").innerHTML=puntos;
+	alert("Has ganado 100 puntos");
+	if(puntos == 1000){
+		alert("Has ganado 1000 puntos, FELICIDADES, se termino la partida");
+		$(document).ready(function(){
+			$("body").hide();
+		});
+	}
+	
+	//document.getElementById("espacio").innerHTML="se acabo el juego";
+}
+
+for(var i=1000;i<=300000;i=i+1000){
+		setTimeout(function(){
+		//location.reload(true);	
+			rutaa = Math.floor((Math.random() * 400) + 1);
+			rutab = Math.floor((Math.random() * 400) + 1);
+			setTimeout(function(){
+				document.getElementById("espacio").innerHTML="<img onclick='ganaste()' src='zapato.jpg' heigth='50' width='50' hspace="+rutaa+" vspace="+rutab+"></img>";
+			},400);
+			document.getElementById("espacio").innerHTML="";
+			
+			document.getElementById("tiempo").innerHTML=tiempo+"<img src='imagen.png'/>";
+			tiempo--;
+			if(i==300000){
+				alert("Se te ha acabado el tiempo, lo siento.");
+				//location.reload(true);
+			}
+		}, i);
+		
+}
+
+
+	</script>
+
+</head>
+<body style="">
+	<span style="font-size:35px ;">Cenicienta y el zapatito rapido </span>
+	<span style="font-size:25px ;">puntos: <span id="puntos"></span><div id="tiempo" style="border:none;float:right;">300<img src="imagen.png"/></div></span>
+	<div id="espacio" class="borde" style="border:none;padding:1px; margin-right:20%; "></div>
+	
+</body>
+</html>
